@@ -1,11 +1,8 @@
 import pyttsx3
+text_speech = pyttsx3.init()
 
-string = "This is an interface demonstration of a price index transfer from an MSSQL Database to ETRM System Previse " \
-         "Coral. Automated data import is achieved with the standalone Enterprise Middleware called Universal Loader."
+string = "Automated data import is achieved with the standalone Enterprise Middleware called Universal Loader."
 
-engine = pyttsx3.init()
-
-# We can use file extension as mp3 and wav, both will work
-engine.save_to_file(string, 'speech.mp3')
-
-engine.runAndWait()
+text_speech.say(string)
+text_speech.save_to_file(string, 'speech.mp3')
+text_speech.runAndWait()
