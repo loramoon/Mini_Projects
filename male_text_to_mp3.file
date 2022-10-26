@@ -1,8 +1,0 @@
-import pyttsx3
-text_speech = pyttsx3.init()
-
-string = "Automated data import is achieved with the standalone Enterprise Middleware called Universal Loader."
-
-text_speech.say(string)
-text_speech.save_to_file(string, 'speech.mp3')
-text_speech.runAndWait()
