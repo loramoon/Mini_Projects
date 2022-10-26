@@ -1,6 +1,0 @@
-import pyttsx3
-text_speech = pyttsx3.init()
-
-answer = 'Hello,Galia! Big hugs from Violeta.'
-text_speech.say(answer)
-text_speech.runAndWait()
