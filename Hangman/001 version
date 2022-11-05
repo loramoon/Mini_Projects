@@ -1,0 +1,83 @@
+import random
+class bcolors:
+    WARNING = '\033[93m'
+    ENDC = '\033[0m'
+    HEADER = '\033[95m'
+world_list = ['КАРАМЕЛ', 'ПРОЗОРЕЦ', 'СКАКАЛЕЦ', 'ТЕЛЕФОН', 'КЛАВИАТУРА', 'БАНИЦА', 'КАКТУС', 'ВЪЗГЛАВНИЦА', 'НЕСЕСЕР',
+              'ВЛЕЧУГО', 'МУШКАТО', 'КНИЖАРНИЦА', 'КОНФИГУРАЦИЯ', 'ПРЕРАЗКАЗ']
+bg_caps = 'А,Б,В,Г,Д,Е,Ж,З,И,Й,К,Л,М,Н,О,П,Р,С,Т,У,Ф,Х,Ц,Ч,Ш,Щ,Ъ,Ь,Ю,Я'
+a = random.choice(world_list)
+first_char = a[0]
+last_char = a[-1]
+used_letters = (f"{first_char}{last_char}"'')
+print("Познай думата:")
+wrong_letters = 5
+while wrong_letters>0:
+    wrong = 0
+    for char in a:
+        if char in used_letters:
+            print(bcolors.WARNING,char,bcolors.ENDC,end="")
+        else:
+            print(bcolors.WARNING,"_",bcolors.ENDC,end="")
+            wrong += 1
+    if wrong == 0:
+        print(f"\n{bcolors.HEADER}ПОЗНА!")
+        print("       -''--.\n"
+              "       _`>   `\.-'<\n"
+              "    _.'     _     '._\n"
+              "  .'   _.='   '=._   '.\n"
+              "  >_   / /_\ /_\ \   _<\n"
+              "    / (  \o/\\o/  ) \.\n"
+              "    >._\ .-,_)-. /_.<\n"
+              "jgs     /__/ \__\ \n"
+              "          '---'     E=mc^2")
+        break
+
+    guess = (input("\nВъведи 1 главна буква на кирилица:"))
+    if len(guess)!=1 or guess not in bg_caps:
+        print(f"Можеш да въвеждаш само 1 главна буква на кирилица")
+        continue
+    elif guess in used_letters:
+        print (f"Това вече го пробва.")
+        continue
+    used_letters = (first_char)+guess+(last_char)+used_letters
+    if guess not in a:
+        if wrong_letters>1:
+            wrong_letters -= 1
+            # print(f"Буква {guess} я няма. Имаш право на още {wrong_letters} грешни предположения.")
+            if wrong_letters==4:
+                  print(            f"{bcolors.HEADER} _______\n"
+                  F" |--{bcolors.WARNING}4{bcolors.ENDC}{bcolors.HEADER}--|\n"
+                  F" |  O  |\n"
+                  F" |     |\n"
+                  F"_|     |_ ")
+            elif wrong_letters==3:
+                  print(            f"{bcolors.HEADER} _______\n"
+                  F" |--{bcolors.WARNING}3{bcolors.ENDC}{bcolors.HEADER}--|\n"
+                  F" |  O  |\n"
+                  F" |  |  |\n"
+                  F" |     |\n"
+                  F"_|     |_ ")
+            elif wrong_letters==2:
+                  print(            f"{bcolors.HEADER} _______\n"
+                  F" |--{bcolors.WARNING}2{bcolors.ENDC}{bcolors.HEADER}--|\n"
+                  F" |  O  |\n"
+                  F" | /|\ |\n"
+                  F" |     |\n"
+                  F"_|     |_ ")
+            elif wrong_letters==1:
+                  print(            f"{bcolors.HEADER} _______\n"
+                  F" |--{bcolors.WARNING}1{bcolors.ENDC}{bcolors.HEADER}--|\n"
+                  F" |  O  |\n"
+                  F" | /|\ |\n"
+                  F" | / \ |\n"
+                  F"_|     |_ ")
+        else:
+            print(f"\nНе позна. Думата е {bcolors.HEADER}{a}.")
+            print(F"{bcolors.HEADER} _______\n"
+                  F" |--|--|\n"
+                  F" |  О  |\n"
+                  F" | /|\ |\n"
+                  F" | / \ |\n"
+                  F"_|     |_ lm")
+            break
