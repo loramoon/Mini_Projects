@@ -1,0 +1,105 @@
+import random
+
+
+class bcolors:
+    yellow = '\033[93m'
+    ENDC = '\033[0m'
+    pink = '\033[95m'
+
+
+def gen(num, n, all_numbers):
+    if len(num) == 1 and num[0] == '0':
+        return
+    if len(num) == n:
+        all_numbers.append(int(''.join(num)))
+        return
+    for i in range(0, 10):
+        i = str(i)
+        if i not in num:
+            gen(num + [i], n, all_numbers)
+
+
+numbrs = []
+gen([], 4, numbrs)
+
+game = int(input(f"{bcolors.yellow}Колко игри искаш да играем? {bcolors.ENDC}"))
+for g in range(game):
+    computer_number = str(random.choice(numbrs))
+    print(computer_number)
+    print(f"Опитай да познаеш четирицифрено число, в което цифрите не се "
+          f"повтарят. {bcolors.yellow}Имаш 10 опита.{bcolors.ENDC}")
+
+    for i in range(10):
+        if 5 < i < 9:
+            print(f"Остават ти още {9 - i} опита")
+        elif i == 9:
+            print(f"{bcolors.yellow}Последен опит!{bcolors.ENDC}")
+        custom_digit = input("Въведи четирицифрено число: ")
+        custom_digit_i = int(custom_digit)
+        if len(custom_digit) != 4:
+            if i <= 5:
+                print(f"Невалидно число!")
+            elif 5 < i < 8:
+                print(f"Невалидно число! Остават ти още {9 - i} опита")
+            elif i == 8:
+                print(f"Невалидно число! {bcolors.yellow}Последен опит!{bcolors.ENDC}")
+            else:
+                print(f"{bcolors.yellow}Не позна. Числото беше {computer_number}{bcolors.ENDC}")
+                print("")
+            continue
+        if custom_digit[0] == '0':
+            if i <= 5:
+                print(f"Невалидно число!")
+            elif 5 < i < 8:
+                print(f"Невалидно число! Остават ти още {9 - i} опита")
+            elif i == 8:
+                print(f"Невалидно число! {bcolors.yellow}Последен опит!{bcolors.ENDC}")
+            else:
+                print(f"{bcolors.yellow}Не позна. Числото беше {computer_number}{bcolors.ENDC}")
+                print("")
+            continue
+        if custom_digit_i not in numbrs:
+            if i <= 5:
+                print(f"Въвеждай различни цифри.")
+            elif 5 < i < 8:
+                print(f"Въвеждай различни цифри. Остават ти още {9 - i} опита")
+            elif i == 8:
+                print(f"Въвеждай различни цифри. {bcolors.yellow}Последен опит!{bcolors.ENDC}")
+            else:
+                print(f"{bcolors.yellow}Не позна. Числото беше {computer_number}{bcolors.ENDC}")
+                print("")
+            continue
+        cows = 0
+        bulls = 0
+        if computer_number[0] in custom_digit:
+            if computer_number[0] == custom_digit[0]:
+                bulls += 1
+            else:
+                cows += 1
+        if computer_number[1] in custom_digit:
+            if computer_number[1] == custom_digit[1]:
+                bulls += 1
+            else:
+                cows += 1
+        if computer_number[2] in custom_digit:
+            if computer_number[2] == custom_digit[2]:
+                bulls += 1
+            else:
+                cows += 1
+        if computer_number[3] in custom_digit:
+            if computer_number[3] == custom_digit[3]:
+                bulls += 1
+            else:
+                cows += 1
+        if custom_digit != computer_number:
+            if i < 9:
+                print(f"При{bcolors.yellow} {custom_digit}{bcolors.ENDC} имаш {bcolors.yellow}{cows} "
+                      f"крави {bcolors.ENDC}и {bcolors.yellow}{bulls} бика{bcolors.ENDC}.")
+
+            else:
+                print(f"{bcolors.yellow}Не позна. Числото беше {computer_number}{bcolors.ENDC}")
+                print("")
+        else:
+            print(f"{bcolors.pink}ТИ СПЕЧЕЛИ!{bcolors.ENDC}")
+            print("")
+            break
