@@ -1,0 +1,5 @@
+import pywhatkit
+
+text = "Put your random text and run the script. The text will be converted in a hand written text."
+
+pywhatkit.text_to_handwriting(text, rgb=(0,0,255))
