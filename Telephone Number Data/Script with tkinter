@@ -19,16 +19,16 @@ def getlocation():
 
 
 root = Tk()
-root.title("Phone data")
-root.geometry("500x500")
+root.title("Phone number data")
+root.geometry("500x250")
 
-label1 = Label(text="Text Data")
+label1 = Label(text="Enter a phone number:")
 label1.pack()
 
 number = Text(height=5)
 number.pack()
 
-button = Button(text="Get location and details", command=getlocation)
+button = Button(text="Get phone number details", command=getlocation)
 button.pack()
 
 result = Text(height=5)
