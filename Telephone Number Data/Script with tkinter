@@ -1,0 +1,37 @@
+from tkinter import *
+import phonenumbers
+from phonenumbers import geocoder, timezone
+from phonenumbers import carrier
+
+
+def getlocation():
+    phone_number = number.get('1.0', END)
+    phone_number = phonenumbers.parse(phone_number)
+    time_zone = timezone.time_zones_for_number(phone_number)
+    valid = phonenumbers.is_valid_number(phone_number)
+    possible = phonenumbers.is_possible_number(phone_number)
+
+    result.insert(END, "The Region is " + geocoder.description_for_number(phone_number, 'en') + '\n')
+    result.insert(END, "The Service Supplier is " + carrier.name_for_number(phone_number, 'en') + '\n')
+    result.insert(END, f"The Time Zone is {time_zone}\n")
+    result.insert(END, f"Valid number: {valid}\n")
+    result.insert(END, f"Available number: {possible}\n")
+
+
+root = Tk()
+root.title("Phone data")
+root.geometry("500x500")
+
+label1 = Label(text="Text Data")
+label1.pack()
+
+number = Text(height=5)
+number.pack()
+
+button = Button(text="Get location and details", command=getlocation)
+button.pack()
+
+result = Text(height=5)
+result.pack()
+
+root.mainloop()
