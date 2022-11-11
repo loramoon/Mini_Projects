@@ -1,0 +1,27 @@
+"""PYTHON CODING CHALLENGE - CREATE LIST OR DICT WITH INITIALS
+Create new list or Dict from 2 lists with initials
+List1: ['Eric Idle', 'John Cleese', 'Graham Chapman']
+List2: [42, 76, 9]
+[’EID42’,’JCL76’,’GCH9’]
+or {’EID’:42, ’JCL’:76,’GCH’:9}"""
+
+from collections import deque
+
+
+List1 = ['Eric Idle', 'John Cleese', 'Graham Chapman']
+List2 = deque([42, 76, 9])
+
+result_dict = {}
+result_list = []
+
+for el in List1:
+    a, b = el.split()
+    key = (a[0] + b[0:2]).upper()
+    result_dict[key] = List2.popleft()
+
+print(result_dict)
+
+for k, v in result_dict.items():
+    result_list.append(k+str(v))
+    
+print(result_list)
