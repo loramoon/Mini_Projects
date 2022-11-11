@@ -16,7 +16,7 @@ result_list = []
 
 for el in List1:
     a, b = el.split()
-    key = (a[0] + b[0:2]).upper()
+    key = (a[0] + b[:2]).upper()
     result_dict[key] = List2.popleft()
 
 print(result_dict)
