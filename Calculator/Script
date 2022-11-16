@@ -46,7 +46,7 @@ def calculate():
             if result_length > 10: result_length = 10
             result_entry.insert(0, f"{result:.{result_length}f}")
     except:
-        messagebox.showerror(title="Error", message="Please, enter a valid number.")
+        messagebox.showerror(title="Error", message="Please, enter a valid operation.")
 
 
 result_entry = customtkinter.CTkEntry(app, text="", text_font=font, text_color="#e3ad49", width=230, fg_color='#000000',
