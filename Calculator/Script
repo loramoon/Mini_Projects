@@ -61,7 +61,7 @@ Button_perc = customtkinter.CTkButton(app, command=lambda: display("%"), text="%
                                       fg_color="#19489e", hover_color="#19489e")
 Button_perc.place(x=70, y=60)
 
-Button_del = customtkinter.CTkButton(app, command=lambda: display("/"), text="/", text_font=font, width=50, height=2,
+Button_del = customtkinter.CTkButton(app, command=lambda: display("/"), text="÷", text_font=font, width=50, height=2,
                                      fg_color="#19489e", hover_color="#19489e")
 Button_del.place(x=130, y=60)
 
