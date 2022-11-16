@@ -9,4 +9,5 @@
 - clearing the result
 - limiting the displayed result to 10 decimal places (if the result is float with more than 10 digits after the decimal point
 
-![image](https://user-images.githubusercontent.com/112502847/202312625-b41d1efa-0fd5-4ce2-aa88-2b4a7c63f45d.png)
+![image](https://user-images.githubusercontent.com/112502847/202313875-4ca88410-31a3-43ca-8d87-0889f28dee8c.png)
+
