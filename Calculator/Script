@@ -1,0 +1,132 @@
+import customtkinter
+from tkinter import *
+from tkinter import messagebox
+
+app = customtkinter.CTk()
+app.title("Calculator")
+app.geometry("250x350")
+app.config(bg="#000000")
+
+font = ('Arial', 20, "bold")
+
+i = 0
+equation = ""
+
+
+def display(value):
+    global i
+    global equation
+    if value == "%":
+        value = "/100"
+    equation += value
+    result_entry.insert(i, value)
+    i += 1
+
+
+def clear():
+    global equation
+    result_entry.delete(0, END)
+    equation = ""
+
+
+def clear_in_calc():
+    global equation
+    result_entry.delete(0, END)
+
+
+def calculate():
+    try:
+        global equation
+        result = eval(equation)
+        clear_in_calc()
+        if isinstance(result, int):
+            result_entry.insert(0, result)
+        else:
+            result_length = len(str(result))
+            if result_length > 10: result_length = 10
+            result_entry.insert(0, f"{result:.{result_length}f}")
+    except:
+        messagebox.showerror(title="Error", message="Please, enter a valid number.")
+
+
+result_entry = customtkinter.CTkEntry(app, text="", text_font=font, text_color="#e3ad49", width=230, fg_color='#000000',
+                                      border_color='#e3ad49')
+result_entry.place(x=10, y=10)
+
+Button_clear = customtkinter.CTkButton(app, command=clear, text="C", text_font=font, width=50, height=2,
+                                       fg_color="#19489e", hover_color="#19489e")
+Button_clear.place(x=10, y=60)
+
+Button_perc = customtkinter.CTkButton(app, command=lambda: display("%"), text="%", text_font=font, width=50, height=2,
+                                      fg_color="#19489e", hover_color="#19489e")
+Button_perc.place(x=70, y=60)
+
+Button_del = customtkinter.CTkButton(app, command=lambda: display("/"), text="/", text_font=font, width=50, height=2,
+                                     fg_color="#19489e", hover_color="#19489e")
+Button_del.place(x=130, y=60)
+
+Button_ndel = customtkinter.CTkButton(app, command=lambda: display("//"), text="//", text_font=font, width=50, height=2,
+                                      fg_color="#19489e", hover_color="#19489e")
+Button_ndel.place(x=190, y=60)
+
+Button_7 = customtkinter.CTkButton(app, command=lambda: display("7"), text="7", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_7.place(x=10, y=120)
+
+Button_8 = customtkinter.CTkButton(app, command=lambda: display("8"), text="8", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_8.place(x=70, y=120)
+
+Button_9 = customtkinter.CTkButton(app, command=lambda: display("9"), text="9", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_9.place(x=130, y=120)
+
+Button_mul = customtkinter.CTkButton(app, command=lambda: display("*"), text="x", text_font=font, width=50, height=2,
+                                     fg_color="#19489e", hover_color="#19489e")
+Button_mul.place(x=190, y=120)
+
+Button_4 = customtkinter.CTkButton(app, command=lambda: display("4"), text="4", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_4.place(x=10, y=180)
+
+Button_5 = customtkinter.CTkButton(app, command=lambda: display("5"), text="5", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_5.place(x=70, y=180)
+
+Button_6 = customtkinter.CTkButton(app, command=lambda: display("6"), text="6", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_6.place(x=130, y=180)
+
+Button_sum = customtkinter.CTkButton(app, command=lambda: display("+"), text="+", text_font=font, width=50, height=2,
+                                     fg_color="#19489e", hover_color="#19489e")
+Button_sum.place(x=190, y=180)
+
+Button_1 = customtkinter.CTkButton(app, command=lambda: display("1"), text="1", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_1.place(x=10, y=240)
+
+Button_2 = customtkinter.CTkButton(app, command=lambda: display("2"), text="2", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_2.place(x=70, y=240)
+
+Button_3 = customtkinter.CTkButton(app, command=lambda: display("3"), text="3", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_3.place(x=130, y=240)
+
+Button_sub = customtkinter.CTkButton(app, command=lambda: display("-"), text="-", text_font=font, width=50, height=2,
+                                     fg_color="#19489e", hover_color="#19489e")
+Button_sub.place(x=190, y=240)
+
+Button_0 = customtkinter.CTkButton(app, command=lambda: display("0"), text="0", text_font=font, width=50, height=2,
+                                   fg_color="#e3ad49", hover_color="#e3ad49")
+Button_0.place(x=10, y=300)
+
+Button_dot = customtkinter.CTkButton(app, command=lambda: display("."), text=".", text_font=font, width=50, height=2,
+                                     fg_color="#19489e", hover_color="#19489e")
+Button_dot.place(x=70, y=300)
+
+Button_equal = customtkinter.CTkButton(app, command=calculate, text="=", text_font=font, width=110, height=2,
+                                       fg_color="#19489e", hover_color="#19489e")
+Button_equal.place(x=130, y=300)
+
+app.mainloop()
