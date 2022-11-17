@@ -47,6 +47,8 @@ def calculate():
             result = str(result)
             integer, dec = result.split(".")
 
+            if len(integer) > 10:
+                result = "Too long number"
             if len(dec) > 10:
                 dec_length = 10
                 result_entry.insert(0, f"{float(result):.{dec_length}f}")
