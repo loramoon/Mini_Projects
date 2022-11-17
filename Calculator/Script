@@ -36,7 +36,7 @@ def clear_in_calc():
 
 def calculate():
     try:
-        global equation
+        global equation, dec_length
         result = eval(equation)
         clear_in_calc()
         if isinstance(result, int):
@@ -44,9 +44,14 @@ def calculate():
                 result = "Too long number"
             result_entry.insert(0, result)
         else:
-            result_length = len(str(result))
-            if result_length > 10: result_length = 10
-            result_entry.insert(0, f"{result:.{result_length}f}")
+            result = str(result)
+            integer, dec = result.split(".")
+
+            if len(dec) > 10:
+                dec_length = 10
+                result_entry.insert(0, f"{float(result):.{dec_length}f}")
+            else:
+                result_entry.insert(0, result)
     except:
         messagebox.showerror(title="Error", message="Please, enter a valid operation.")
 
