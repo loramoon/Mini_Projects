@@ -1,15 +1,19 @@
 from tkinter import *
 from tkinter.ttk import *
 from time import strftime
+import pygame
 
 root = Tk()
 root.title("Time is running away...")
 
+pygame.mixer.init()
 
 def time():
     string = strftime("%H:%M:%S %p")
     label.config(text=string)
     label.after(1000, time)
+    pygame.mixer.music.load("tic.mp3")
+    pygame.mixer.music.play()
 
 
 label = Label(root, font=("Arial", 80), background="black", foreground="cyan")
