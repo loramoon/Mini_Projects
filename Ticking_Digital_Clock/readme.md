@@ -1,3 +1,4 @@
-### Tkinter Digital Clock
+### Tkinter Ticking Digital Clock
 
-![image](https://user-images.githubusercontent.com/112502847/202418720-5fb1097b-2979-4111-9569-cc697569a4a3.png)
+
+![giphy](https://user-images.githubusercontent.com/112502847/202427164-f83fe249-3bbd-43ff-b7dc-a8a628b556bd.gif)
