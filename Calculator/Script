@@ -40,6 +40,8 @@ def calculate():
         result = eval(equation)
         clear_in_calc()
         if isinstance(result, int):
+            if len(str(result)) > 10:
+                result = "Too long number"
             result_entry.insert(0, result)
         else:
             result_length = len(str(result))
